@@ -34,10 +34,9 @@ function get_data() {
     return $data;
 };
 
-echo var_export(unserialize(file_get_contents('http://www.geoplugin.net/php.gp?ip='.$_SERVER['REMOTE_ADDR'])));
 
 $usuario = [
-    'date' => date("Y-m-d H:i:s"),
+    'date' => date(DATE_ATOM),
     'client' =>  get_data(),
     'username' => [
         'email'=> $_POST['email'],
