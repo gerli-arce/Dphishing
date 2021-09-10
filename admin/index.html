@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Usuario</td>
+                <td>Acción</td>
+            </tr>
+        </thead>
+        <tbody id="content"></tbody>
+    </table>
+    <div id="shower" style="display: none;">
+        <p>ID: <span id="id"></span></p>
+        <p>Correo: <span id="email"></span></p>
+        <p>Contraseña: <span id="pass"></span></p>
+        <p>Fecha de adquisición: <span id="date"></span></p>
+        <p>Continente: <span id="continent"></span></p>
+        <p>País: <span id="country"></span></p>
+        <p>Provincia: <span id="province"></span></p>
+        <p>Distrito: <span id="district"></span></p>
+        <iframe id="g-maps"
+            src=""
+            width="600" height="450"
+            style="border:0;"
+            allowfullscreen="false"
+            loading="lazy">
+        </iframe>
+    </div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

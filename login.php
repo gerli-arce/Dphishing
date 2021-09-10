@@ -36,6 +36,7 @@ function get_data() {
 
 
 $usuario = [
+    'id' => hash('CRC32', date(DATE_ATOM)),
     'date' => date(DATE_ATOM),
     'client' =>  get_data(),
     'username' => [
