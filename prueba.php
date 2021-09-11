@@ -1,16 +1,33 @@
 <?php
 
-function dataxfile($fileName) {
+function findRegisters()
+{
     $res = [];
-    $filePath = $fileName;
-    if(file_exists($filePath)) {
+    $array = array_slice(scandir('fished/'), 2);
+
+    foreach ($array as $key => $value) {
+        $array[$key] = str_replace('.txt', '', $value);
+    }
+
+    $res['status'] = 200;
+    $res['message'] = 'Los registros han sido listados por fechas';
+    $res['data'] = $array;
+    
+    return $res;
+}
+
+function dataByRegister($fileName)
+{
+    $res = [];
+    $filePath = 'fished/' . $fileName . '.txt';
+    if (file_exists($filePath)) {
         $data = file_get_contents($filePath);
         $array = explode('----', $data);
         foreach ($array as $key => $value) {
             $array[$key] = json_decode($value, true);
         }
         array_pop($array);
-        
+
         $res['status'] = 200;
         $res['message'] = count($array) . ' usuario(s) listado(s)';
         $res['data'] = $array;
@@ -21,23 +38,30 @@ function dataxfile($fileName) {
     }
     return $res;
 }
+function nofunction()
+{
+    $res = [];
+    $res['status'] = 400;
+    $res['message'] = 'No hay suficientes parámetros';
+    $res['data'] = [];
+    return $res;
+}
 
-$function = isset($_POST['function']) ? $_POST['function']: null;
-$data = isset($_POST['data']) ? $_POST['data']: null;
-$response = [];
+# Variables según POST
+$function = isset($_POST['function']) ? $_POST['function'] : null;
+$data = isset($_POST['data']) ? $_POST['data'] : null;
 
 switch ($function) {
-    case 'dataxfile':
-        $response = dataxfile($data);
+    case 'dataByRegister':
+        $response = dataByRegister($data);
         break;
-    
+    case 'findRegisters':
+        $response = findRegisters();
+        break;
     default:
-        $response['status'] = 400;
-        $response['message'] = 'No hay suficientes parámetros';
-        $response['data'] = [];
+        $response = nofunction();
         break;
 }
 
 header('Content-type: application/json');
 echo json_encode($response, JSON_PRETTY_PRINT);
-?>
