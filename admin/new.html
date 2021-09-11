@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: aliceblue;
+        }
+
+        #head {
+            background-color: #fff;
+            max-width: 720px;
+            margin: 20px auto;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+
+        #filesContainer,
+        #fileContent {
+            background-color: #fff;
+            max-width: 720px;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+
+        #refresh {
+            display: block;
+            padding: 4px 8px;
+            font-size: medium;
+            border-radius: 5px;
+            border: none;
+            background-color: seagreen;
+            color: #fff;
+            box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        #filesContainer hr {
+            margin: 20px auto;
+            height: 2px;
+            border: none;
+            height: 8px;
+            border-radius: 5px;
+            box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        #files {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        #files>div {
+            width: max-content;
+            font-size: x-small;
+            text-align: center;
+            border-radius: 5px;
+            padding: 5px;
+            color: #000;
+            cursor: pointer;
+            user-select: none;
+            margin: 2.5px;
+            transition: 0.125s;
+        }
+
+        #files>div.selected {
+            background-color: rgba(128, 128, 128, 0.205);
+        }
+
+        #files>div>.img {
+            content: url('icons/applicationjson.svg');
+            margin-bottom: 5px;
+        }
+        #fileContent > table {
+            width: 100%;
+        }
+        #fileContent > table > thead >tr > td {
+            text-align: center;
+            background-color: seagreen;
+            color: #fff;
+            border-radius: 5px;
+            padding: 4px 8px;
+        }
+        #content > tr > td {
+            background-color: rgba(46, 139, 86, 0.5);
+            border-radius: 5px;
+            word-break: break-all;
+            text-align: center;
+            padding: 4px 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="head">
+        <h1>Centro de administración</h1>
+    </div>
+    <div id="filesContainer">
+        <button id="refresh" onclick="listRegisters()">Refrescar</button>
+        <hr>
+        <div id="files">
+        </div>
+    </div>
+    <div id="fileContent">
+        <table>
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>USUARIO</td>
+                    <td>TIEMPO</td>
+                    <td>ACCIÓN</td>
+                </tr>
+            </thead>
+            <tbody id="content">
+                <tr>
+                    <td colspan="5">--- Muestre resultados aquí ---</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/moment.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

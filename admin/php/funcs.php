@@ -1,5 +1,7 @@
 <?php
 
+header('Access-Control-Allow-Origin: *');
+
 function findRegisters()
 {
     $res = [];
@@ -11,7 +13,7 @@ function findRegisters()
 
     $res['status'] = 200;
     $res['message'] = 'Los registros han sido listados por fechas';
-    $res['data'] = $array;
+    $res['data'] = array_reverse($array);
     
     return $res;
 }
