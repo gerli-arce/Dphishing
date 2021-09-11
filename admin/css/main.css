@@ -1,0 +1,38 @@
+body{
+    background-color: rgba(29, 29, 41, 0.753);
+    
+}
+
+.head-h{
+    text-align: center;
+    color: rgb(80, 185, 80);
+    font-size: 50px;
+}
+
+.table-in{
+    text-align: left;
+    margin-left: 28%;
+    margin-top: 55px;
+}
+.hr{
+    margin: 20px;
+    background-color: rgb(0, 0, 0);
+}
+.head-thead td{
+    padding-left: 55px;
+    padding-right: 55px;
+    color: blue;
+    font-size: 29px;
+    border-left: solid 2px red;
+    border-right:  solid 2px red;
+}
+.gmail-pish{
+    color: rgb(80, 185, 80);
+    font-size: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: rgba(0, 139, 139, 0.342);
+    border-width: 5px solid;
+    border-radius: 3px;
+   
+}

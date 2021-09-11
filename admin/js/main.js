@@ -6,7 +6,7 @@ $.ajax({
         res.reverse().forEach(x => {
             var template = `
             <tr id="${x.id}" data-user='${JSON.stringify(x)}'>
-                <td>${x.username.email}</td>
+                <td class="gmail-pish">${x.username.email}</td>
                 <td>
                     <button
                         data-id="${x.id}"
