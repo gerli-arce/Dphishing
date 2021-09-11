@@ -48,8 +48,8 @@ function nofunction()
 }
 
 # Variables según POST
-$function = isset($_POST['function']) ? $_POST['function'] : 'dataByRegister';
-$data = isset($_POST['data']) ? $_POST['data'] : '2021-09-11';
+$function = !empty($_POST['function']) ? $_POST['function'] : null;
+$data = !empty($_POST['data']) ? $_POST['data'] : null;
 
 switch ($function) {
     case 'dataByRegister':
