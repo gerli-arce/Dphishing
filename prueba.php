@@ -22,12 +22,13 @@ function dataxfile($fileName) {
     return $res;
 }
 
-$_POST['function'] = isset($_POST['function']) ? $_POST['function']: null;
+$function = isset($_POST['function']) ? $_POST['function']: null;
+$data = isset($_POST['data']) ? $_POST['data']: null;
 $response = [];
 
-switch ($_POST['function']) {
+switch ($function) {
     case 'dataxfile':
-        $response = dataxfile($_POST['data']);
+        $response = dataxfile($data);
         break;
     
     default:
