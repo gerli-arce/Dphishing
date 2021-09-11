@@ -22,6 +22,21 @@ function dataxfile($fileName) {
     return $res;
 }
 
+$_POST['function'] = isset($_POST['function']) ? $_POST['function']: null;
+$response = [];
+
+switch ($_POST['function']) {
+    case 'dataxfile':
+        $response = dataxfile($_POST['data']);
+        break;
+    
+    default:
+        $response['status'] = 400;
+        $response['message'] = 'No hay suficientes parámetros';
+        $response['data'] = [];
+        break;
+}
+
 header('Content-type: application/json');
-echo json_encode(dataxfile('usernames'), JSON_PRETTY_PRINT);
+echo json_encode($response, JSON_PRETTY_PRINT);
 ?>
