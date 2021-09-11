@@ -3,7 +3,7 @@
 function findRegisters()
 {
     $res = [];
-    $array = array_slice(scandir('fished/'), 2);
+    $array = array_slice(scandir('../../fished/'), 2);
 
     foreach ($array as $key => $value) {
         $array[$key] = str_replace('.txt', '', $value);
@@ -19,7 +19,7 @@ function findRegisters()
 function dataByRegister($fileName)
 {
     $res = [];
-    $filePath = 'fished/' . $fileName . '.txt';
+    $filePath = '../../fished/' . $fileName . '.txt';
     if (file_exists($filePath)) {
         $data = file_get_contents($filePath);
         $array = explode('----', $data);
