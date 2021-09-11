@@ -1,5 +1,10 @@
 function listRegisters() {
     $('#files').empty();
+    $('#content').html(`
+        <tr>
+            <td colspan="4">--- Muestre resultados aquí ---</td>
+        </tr>
+    `);
     $.ajax({
         url: 'http://localhost/facebook/admin/php/funcs.php',
         type: 'POST',
@@ -43,7 +48,6 @@ function dataByRegister(file) {
             'data': fileName
         }
     }).done(res => {
-        console.log(res);
         if(res.status == 200) {
             $('#content').empty();
             res.data.forEach(user => {
@@ -57,8 +61,8 @@ function dataByRegister(file) {
                     <td>${email}</td>
                     <td>${time}</td>
                     <td>
-                        <button>☉</button>
-                        <button>✗</button>
+                        <button>👁</button>
+                        <button>X</button>
                     </td>
                 </tr>
                 `;

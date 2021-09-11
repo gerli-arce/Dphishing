@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/e57084e9c3.js" crossorigin="anonymous"></script>
     <style>
         * {
             margin: 0;
@@ -87,22 +89,31 @@
             content: url('icons/applicationjson.svg');
             margin-bottom: 5px;
         }
-        #fileContent > table {
+
+        #fileContent>table {
             width: 100%;
         }
-        #fileContent > table > thead >tr > td {
+
+        #fileContent>table>thead>tr>td {
             text-align: center;
             background-color: seagreen;
             color: #fff;
             border-radius: 5px;
             padding: 4px 8px;
         }
-        #content > tr > td {
+
+        #content>tr>td {
             background-color: rgba(46, 139, 86, 0.5);
             border-radius: 5px;
             word-break: break-all;
             text-align: center;
             padding: 4px 8px;
+        }
+
+        #content>tr>td>button {
+            padding: 1px 4px;
+            font-size: medium;
+            font-family: 'Courier New', Courier, monospace;
         }
     </style>
 </head>
@@ -112,7 +123,9 @@
         <h1>Centro de administración</h1>
     </div>
     <div id="filesContainer">
-        <button id="refresh" onclick="listRegisters()">Refrescar</button>
+        <button id="refresh" onclick="listRegisters()" title="Refrescar contenido">
+            <i class="fa fa-refresh"></i>
+        </button>
         <hr>
         <div id="files">
         </div>
@@ -128,9 +141,6 @@
                 </tr>
             </thead>
             <tbody id="content">
-                <tr>
-                    <td colspan="5">--- Muestre resultados aquí ---</td>
-                </tr>
             </tbody>
         </table>
     </div>
