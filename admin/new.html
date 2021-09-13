@@ -146,18 +146,22 @@
         }
         #data {
             width: 40%;
+            padding-right: 5px;
         }
         #data > p {
             padding: 4px 8px;
-            background-color: #129a4d;
-            color: #fff;
-            margin: 2.5px;
+            background-color: #fff;
+            color: #000;
+            margin-top: 2.5px;
             border-radius: 5px;
             user-select: none;
             cursor: pointer;
             white-space: nowrap;
             text-overflow: ellipsis;
             overflow: hidden;
+        }
+        #data > p:nth-child(1) {
+            margin: 0;
         }
         #g-maps {
             width: 60%;
@@ -168,8 +172,10 @@
         @media screen and (max-width: 600px) {
             #data {
                 width: 100%;
+                padding: 0;
             }
             #g-maps {
+                margin-top: 5px;
                 width: 100%;
                 height: 500px;
             }
@@ -193,20 +199,49 @@
         <div id="title">Muestro de datos de usuario</div>
         <div id="content">
             <div id="data">
-                <p>Id: <span id="id"></span></p>
-                <p>Correo: <span id="email">gamboapalomibocrlosmanuel@gmail.com</span></p>
-                <p>Contraseña: <span id="pass"></span></p>
-                <p>Fecha: <span id="date"></span></p>
-                <p>IP: <span id="ip"></span></p>
-                <p>Continente: <span id="continent"></span></p>
-                <p>País: <span id="country"></span></p>
-                <p>Región: <span id="region"></span></p>
-                <p>Ciudad: <span id="city"></span></p>
-                <p>Coordenadas: <span id="latitude"></span>; <span id="longitude"></span></p>
+                <p onclick="copyText(this)">
+                    Id: 
+                    <span id="id"></span>
+                </p>
+                <p onclick="copyText(this)">
+                    Correo: 
+                    <span id="email"></span>
+                </p>
+                <p onclick="copyText(this)">
+                    Contraseña: 
+                    <span id="pass"></span>
+                </p>
+                <p onclick="copyText(this)">
+                    Fecha: 
+                    <span id="date"></span>
+                </p>
+                <p onclick="copyText(this)">
+                    IP: 
+                    <span id="ip"></span>
+                </p>
+                <p onclick="copyText(this)">
+                    Continente: 
+                    <span id="continent"></span>
+                </p>
+                <p onclick="copyText(this)">
+                    País: 
+                    <span id="country"></span>
+                </p>
+                <p onclick="copyText(this)">
+                    Región: 
+                    <span id="region"></span>
+                </p>
+                <p onclick="copyText(this)">
+                    Ciudad: 
+                    <span id="city"></span>
+                </p>
+                <p onclick="copyText($(this).children('span').text())">
+                    Coordenadas: 
+                    (<span id="latitude"></span><span id="longitude"></span>)
+                </p>
             </div>
             <iframe id="g-maps"
                 src=""
-                width="600" height="450"
                 style="border:0;"
                 allowfullscreen="false"
                 loading="lazy">

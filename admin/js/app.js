@@ -110,15 +110,20 @@ function showDataByUser(user) {
     $('#email').text(dataUser.username.email);
     $('#pass').text(dataUser.username.pass);
     $('#date').text(moment(dataUser.date).format('Do/MM/YY h:mm:ss a'));
-    $('#ip').text(dataUser.client.ip);
-    $('#continent').text(dataUser.client.continent);
-    $('#country').text(dataUser.client.country);
-    $('#region').text(dataUser.client.province);
-    $('#city').text(dataUser.client.district);
+    var ip = dataUser.client.ip == '::1' ? '0.0.0.0': dataUser.client.ip;
+    var continent = dataUser.client.continent ? dataUser.client.continent: 'Desconocido';
+    var country = dataUser.client.country ? dataUser.client.country: 'Desconocido';
+    var region = dataUser.client.province ? dataUser.client.province: 'Desconocido';
+    var city = dataUser.client.district ? dataUser.client.district: 'Desconocido';
     var latitude = dataUser.client.geolocation.latitude ? dataUser.client.geolocation.latitude : 0;
     var longitude = dataUser.client.geolocation.longitude ? dataUser.client.geolocation.longitude : 0;
-    $('#latitude').text(latitude);
-    $('#longitude').text(longitude);
+    $('#ip').text(ip);
+    $('#continent').text(continent);
+    $('#country').text(country);
+    $('#region').text(region);
+    $('#city').text(city);
+    $('#latitude').text(latitude + ',');
+    $('#longitude').text(' ' + longitude);
     $('#g-maps').attr('src', `https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s${latitude},${longitude}!6i15`);
     $('#content').show(250);
 }
@@ -128,3 +133,18 @@ $(document).on('click', '#back', function () {
     $('#files').removeClass('users');
     listRegisters();
 })
+
+function copyText(e) {
+    var texto = $(e).children('span').text();
+    var aux = document.createElement("input");
+    aux.setAttribute("value", texto);
+    document.body.appendChild(aux);
+    aux.select();
+    var res = document.execCommand("copy");
+    if (res) {
+        console.log('Copiado');
+    } else {
+        console.log('No copiado');
+    }
+    document.body.removeChild(aux);
+}
