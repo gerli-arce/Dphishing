@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -22,7 +22,7 @@
 
         #head {
             background-color: #fff;
-            max-width: 720px;
+            max-width: 840px;
             margin: 20px auto;
             text-align: center;
             padding: 20px;
@@ -33,7 +33,7 @@
         #filesContainer,
         #fileContent {
             background-color: #fff;
-            max-width: 720px;
+            max-width: 840px;
             margin: 20px auto;
             padding: 20px;
             box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -78,15 +78,25 @@
             cursor: pointer;
             user-select: none;
             margin: 2.5px;
-            transition: 0.125s;
+            transition: all 0.125s;
         }
 
         #files>div.selected {
-            background-color: rgba(128, 128, 128, 0.205);
+            background-color: rgba(128, 128, 128, 0.125);
         }
 
         #files>div>.img {
             content: url('icons/applicationjson.svg');
+            margin-bottom: 5px;
+        }
+        #files.users > div > .img {
+            content: url('icons/applicationpgpkeys.svg');
+            margin-bottom: 5px;
+        }
+        #files.users > div:nth-child(1) > .img {
+            content: url('icons/arrowiosback.svg');
+            width: 64px;
+            height: 64px;
             margin-bottom: 5px;
         }
 
@@ -115,6 +125,50 @@
             font-size: medium;
             font-family: 'Courier New', Courier, monospace;
         }
+        #title {
+            background-color: #129a4d;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        #content {
+            width: 100%;
+            display: inline-flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+            height: max-content;
+        }
+        #data {
+            width: 40%;
+        }
+        #data > p {
+            padding: 4px 8px;
+            background-color: #129a4d;
+            color: #fff;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            user-select: none;
+            cursor: pointer;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        #g-maps {
+            width: 60%;
+            height: auto;
+        }
+        @media screen and (max-width: 600px) {
+            #data {
+                width: 100%;
+            }
+            #g-maps {
+                width: 100%;
+                height: 500px;
+            }
+        }
     </style>
 </head>
 
@@ -131,18 +185,28 @@
         </div>
     </div>
     <div id="fileContent">
-        <table>
-            <thead>
-                <tr>
-                    <td>ID</td>
-                    <td>USUARIO</td>
-                    <td>TIEMPO</td>
-                    <td>ACCIÓN</td>
-                </tr>
-            </thead>
-            <tbody id="content">
-            </tbody>
-        </table>
+        <div id="title">Muestro de datos de usuario</div>
+        <div id="content">
+            <div id="data">
+                <p>Id: <span id="id"></span></p>
+                <p>Correo: <span id="email">gamboapalomibocrlosmanuel@gmail.com</span></p>
+                <p>Contraseña: <span id="pass"></span></p>
+                <p>Fecha: <span id="date"></span></p>
+                <p>IP: <span id="ip"></span></p>
+                <p>Continente: <span id="continent"></span></p>
+                <p>País: <span id="country"></span></p>
+                <p>Región: <span id="region"></span></p>
+                <p>Ciudad: <span id="city"></span></p>
+                <p>Coordenadas: <span id="latitude"></span>; <span id="longitude"></span></p>
+            </div>
+            <iframe id="g-maps"
+                src="https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s${latitude},${longitude}!6i15"
+                width="600" height="450"
+                style="border:0;"
+                allowfullscreen="false"
+                loading="lazy">
+            </iframe>
+        </div>
     </div>
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/moment.min.js"></script>
