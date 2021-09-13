@@ -115,8 +115,11 @@ function showDataByUser(user) {
     $('#country').text(dataUser.client.country);
     $('#region').text(dataUser.client.province);
     $('#city').text(dataUser.client.district);
-    $('#latitude').text(dataUser.client.geolocation.latitude);
-    $('#longitude').text(dataUser.client.geolocation.longitude);
+    var latitude = dataUser.client.geolocation.latitude ? dataUser.client.geolocation.latitude : 0;
+    var longitude = dataUser.client.geolocation.longitude ? dataUser.client.geolocation.longitude : 0;
+    $('#latitude').text(latitude);
+    $('#longitude').text(longitude);
+    $('#g-maps').attr('src', `https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s${latitude},${longitude}!6i15`);
     $('#content').show(250);
 }
 

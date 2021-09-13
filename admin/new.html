@@ -140,6 +140,9 @@
             flex-direction: row;
             justify-content: center;
             height: max-content;
+            background-color: #129a4d;
+            border: 5px solid #129a4d;
+            border-radius: 10px;
         }
         #data {
             width: 40%;
@@ -148,7 +151,7 @@
             padding: 4px 8px;
             background-color: #129a4d;
             color: #fff;
-            margin-bottom: 5px;
+            margin: 2.5px;
             border-radius: 5px;
             user-select: none;
             cursor: pointer;
@@ -159,6 +162,8 @@
         #g-maps {
             width: 60%;
             height: auto;
+            border-radius: 5px;
+            background-color: #fff;
         }
         @media screen and (max-width: 600px) {
             #data {
@@ -200,7 +205,7 @@
                 <p>Coordenadas: <span id="latitude"></span>; <span id="longitude"></span></p>
             </div>
             <iframe id="g-maps"
-                src="https://www.google.com/maps/embed?origin=mfe&pb=!1m3!2m1!1s${latitude},${longitude}!6i15"
+                src=""
                 width="600" height="450"
                 style="border:0;"
                 allowfullscreen="false"
