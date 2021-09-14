@@ -1,0 +1,21 @@
+# Activar RewriteEngine
+RewriteEngine on
+
+RewriteCond %{SERVER_PORT} 80
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+
+#   Reescribir la URL solicitada por el usuario
+
+#   Home
+RewriteRule ^(.*)$ $1.php [L]
+
+# Reasignando la URL
+RewriteRule ^video/(.*)$  ./index.php?video=$1 [L]
+
+# Páginas de error
+ErrorDocument 403 /error
+ErrorDocument 404 /error
+ErrorDocument 500 /error
