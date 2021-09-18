@@ -34,7 +34,7 @@ function listRegisters() {
     } else {
         $('#files').empty();
         $.ajax({
-            url: 'http://localhost/facebook/admin/php/funcs.php',
+            url: 'php/funcs.php',
             type: 'POST',
             data: {
                 'function': 'findRegisters'
@@ -76,7 +76,7 @@ function dataByRegister(file) {
                 </div>
             `);
     $.ajax({
-        url: 'http://localhost/facebook/admin/php/funcs.php',
+        url: 'php/funcs.php',
         type: 'POST',
         data: {
             'function': 'dataByRegister',
@@ -148,3 +148,21 @@ function copyText(e) {
     }
     document.body.removeChild(aux);
 }
+$('#generate').click(function(){
+    var url = $('#in-url').val();
+    $.ajax({
+        url: 'php/funcs.php',
+        type: 'POST',
+        data: {
+            'function': 'generateURL',
+            'data': url
+        }
+    }).done(res => {
+        if (res.status == 200){
+            $('#out-url').val(res.data);
+        }else{
+            console.log(res.message)
+        }
+
+    })
+});

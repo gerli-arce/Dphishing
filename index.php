@@ -16,7 +16,7 @@ if ($width == null) {
     ';
 } else {
     if($width < 700) {
-        include 'mobile.html';
+        include 'mobile.php';
     } else {
         include 'desktop.php';
     }

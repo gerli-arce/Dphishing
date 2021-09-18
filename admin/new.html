@@ -169,6 +169,35 @@
             border-radius: 5px;
             background-color: #fff;
         }
+        /*yon*/
+        #out-url,
+        #in-url{
+            font-size: medium;
+            border: 2px solid rgb(7, 240, 7);
+            padding: 5px 9px;
+            color: black;
+            margin-left: 100px;
+            width: 250px;
+            outline: none;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+        #out-url{
+            margin-left: 10px; 
+        }
+        #generate{
+            font-size: medium;
+            font-size: 15px;
+            border: 5px solid rgba(33, 146, 52, 0.445);
+            padding: 5px 9px;
+            color: black;
+            margin-left: 10px;
+         
+            text-decoration: medium;
+            border-radius: 6px;
+        }
+
+        /*yon*/
         @media screen and (max-width: 600px) {
             #data {
                 width: 100%;
@@ -191,6 +220,9 @@
         <button id="refresh" onclick="listRegisters()" title="Refrescar contenido">
             <i class="fa fa-refresh"></i>
         </button>
+        <input type="url" id="in-url" placeholder="Ingrese una URL">
+        <button id="generate" >Generear URL</button>
+        <input type="url" id="out-url" placeholder="URL generada" readonly>
         <hr>
         <div id="files">
         </div>

