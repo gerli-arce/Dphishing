@@ -133,9 +133,7 @@ $(document).on('click', '#back', function () {
     $('#files').removeClass('users');
     listRegisters();
 })
-
-function copyText(e) {
-    var texto = $(e).children('span').text();
+function fn_copy(texto) {
     var aux = document.createElement("input");
     aux.setAttribute("value", texto);
     document.body.appendChild(aux);
@@ -148,6 +146,17 @@ function copyText(e) {
     }
     document.body.removeChild(aux);
 }
+function copyText(e) {
+    var texto = $(e).children('span').text();
+    fn_copy(texto);
+}
+function copyUrl(e) {
+    var texto = $(e).val();
+    fn_copy(texto);
+}
+function shGenerator() {
+    $('#generator').toggle(250);
+};
 $('#generate').click(function(){
     var url = $('#in-url').val();
     $.ajax({

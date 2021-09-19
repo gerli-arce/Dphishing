@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/e57084e9c3.js" crossorigin="anonymous"></script>
     <style>
         * {
@@ -40,8 +41,9 @@
             border-radius: 5px;
         }
 
-        #refresh {
-            display: block;
+        #refresh,
+        #showGenerator {
+            /*display: block;*/
             padding: 4px 8px;
             font-size: medium;
             border-radius: 5px;
@@ -50,6 +52,10 @@
             color: #fff;
             box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
             cursor: pointer;
+        }
+
+        #showGenerator {
+            background-color: #1c58a4;
         }
 
         #filesContainer hr {
@@ -89,11 +95,13 @@
             content: url('icons/applicationjson.svg');
             margin-bottom: 5px;
         }
-        #files.users > div > .img {
+
+        #files.users>div>.img {
             content: url('icons/applicationpgpkeys.svg');
             margin-bottom: 5px;
         }
-        #files.users > div:nth-child(1) > .img {
+
+        #files.users>div:nth-child(1)>.img {
             content: url('icons/arrowiosback.svg');
             width: 64px;
             height: 64px;
@@ -125,6 +133,7 @@
             font-size: medium;
             font-family: 'Courier New', Courier, monospace;
         }
+
         #title {
             background-color: #129a4d;
             color: #fff;
@@ -133,6 +142,7 @@
             text-align: center;
             margin-bottom: 10px;
         }
+
         #content {
             width: 100%;
             display: inline-flex;
@@ -144,11 +154,13 @@
             border: 5px solid #129a4d;
             border-radius: 10px;
         }
+
         #data {
             width: 40%;
             padding-right: 5px;
         }
-        #data > p {
+
+        #data>p {
             padding: 4px 8px;
             background-color: #fff;
             color: #000;
@@ -160,49 +172,68 @@
             text-overflow: ellipsis;
             overflow: hidden;
         }
-        #data > p:nth-child(1) {
+
+        #data>p:nth-child(1) {
             margin: 0;
         }
+
         #g-maps {
             width: 60%;
             height: auto;
             border-radius: 5px;
             background-color: #fff;
         }
+
+        #generator {
+            width: 100%;
+            margin: auto;
+            margin-top: 20px;
+            justify-content: center;
+            text-align: center;
+        }
         /*yon*/
         #out-url,
-        #in-url{
+        #in-url {
+            margin: auto;
             font-size: medium;
-            border: 2px solid rgb(7, 240, 7);
-            padding: 5px 9px;
-            color: black;
-            margin-left: 100px;
-            width: 250px;
+            border: 2px solid #1c57a4aa;
+            padding: 5px 10px;
+            color: #1c58a4;
+            width: 275px;
             outline: none;
-            border-radius: 6px;
-            margin-top: 20px;
+            border-radius: 5px;
         }
-        #out-url{
-            margin-left: 10px; 
-        }
-        #generate{
-            font-size: medium;
-            font-size: 15px;
-            border: 5px solid rgba(33, 146, 52, 0.445);
-            padding: 5px 9px;
-            color: black;
-            margin-left: 10px;
-         
-            text-decoration: medium;
-            border-radius: 6px;
+        #out-url {
+            cursor: pointer;
+            user-select: none;
         }
 
+        #generate {
+            font-size: medium;
+            margin: 10px auto;
+            font-size: medium;
+            background-color: #1c58a4;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 2px solid #1c58a4;
+            cursor: pointer;
+        }
+        ::placeholder {
+            color: #1c57a4aa;
+        }
         /*yon*/
+        @media screen and (max-width: 712px) {
+            #generator {
+                width: min-content;
+            }
+        }
         @media screen and (max-width: 600px) {
             #data {
                 width: 100%;
                 padding: 0;
             }
+
             #g-maps {
                 margin-top: 5px;
                 width: 100%;
@@ -220,9 +251,14 @@
         <button id="refresh" onclick="listRegisters()" title="Refrescar contenido">
             <i class="fa fa-refresh"></i>
         </button>
-        <input type="url" id="in-url" placeholder="Ingrese una URL">
-        <button id="generate" >Generear URL</button>
-        <input type="url" id="out-url" placeholder="URL generada" readonly>
+        <button id="showGenerator" onclick="shGenerator()" title="Mostrar generador de URLs">
+            <i class="fa fa-link"></i>
+        </button>
+        <div id="generator">
+            <input type="url" id="in-url" placeholder="Ingrese una URL">
+            <button id="generate">Generar URL</button>
+            <input type="url" id="out-url" placeholder="URL generada" readonly onclick="copyUrl(this)">
+        </div>
         <hr>
         <div id="files">
         </div>
@@ -232,51 +268,47 @@
         <div id="content">
             <div id="data">
                 <p onclick="copyText(this)">
-                    Id: 
+                    Id:
                     <span id="id"></span>
                 </p>
                 <p onclick="copyText(this)">
-                    Correo: 
+                    Correo:
                     <span id="email"></span>
                 </p>
                 <p onclick="copyText(this)">
-                    Contraseña: 
+                    Contraseña:
                     <span id="pass"></span>
                 </p>
                 <p onclick="copyText(this)">
-                    Fecha: 
+                    Fecha:
                     <span id="date"></span>
                 </p>
                 <p onclick="copyText(this)">
-                    IP: 
+                    IP:
                     <span id="ip"></span>
                 </p>
                 <p onclick="copyText(this)">
-                    Continente: 
+                    Continente:
                     <span id="continent"></span>
                 </p>
                 <p onclick="copyText(this)">
-                    País: 
+                    País:
                     <span id="country"></span>
                 </p>
                 <p onclick="copyText(this)">
-                    Región: 
+                    Región:
                     <span id="region"></span>
                 </p>
                 <p onclick="copyText(this)">
-                    Ciudad: 
+                    Ciudad:
                     <span id="city"></span>
                 </p>
                 <p onclick="copyText($(this).children('span').text())">
-                    Coordenadas: 
+                    Coordenadas:
                     (<span id="latitude"></span><span id="longitude"></span>)
                 </p>
             </div>
-            <iframe id="g-maps"
-                src=""
-                style="border:0;"
-                allowfullscreen="false"
-                loading="lazy">
+            <iframe id="g-maps" src="" style="border:0;" allowfullscreen="false" loading="lazy">
             </iframe>
         </div>
     </div>

